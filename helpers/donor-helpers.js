@@ -7,5 +7,12 @@ module.exports = {
                 resolve({ status: true })
             })
         })
+    },
+    getAllFood: (user) => {
+        return new Promise(async (resolve, reject) => {
+            let foodList = await foodModel.find({ uid: user })
+           
+            resolve(foodList)
+        })
     }
 }

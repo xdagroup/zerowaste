@@ -33,5 +33,13 @@ router.post('/addfood', verifyLogin, verifyRole,function (req, res, next) {
         }
     })
 });
+router.get('/list', verifyLogin, verifyRole, (req, res) => {
+    let user = req.session.user._id
+    donorHelper.getAllFood(user).then((response) => {
+        console.log("Fetched All Food");
+    
+        res.render('donor/dashboard', { response });
+    })
+})
 
 module.exports = router;
