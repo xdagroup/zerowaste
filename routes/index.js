@@ -26,9 +26,15 @@ router.post('/signup', async (req, res) => {
   loginHelper.doSignup(req.body).then((response) => {
     if (response.status) {
       req.session.loggedIn = true
-      req.session.user = response
-      res.redirect('/home')
-    } else {
+      req.session.user = response.data
+      if (req.session.user.role === "donor")
+        res.redirect('/donor')
+      else
+        res.redirect('/acceptor')
+
+    } 
+     
+     else {
       req.session.loginErr = "User already registered. Please Login"
       res.redirect('/login')
     }

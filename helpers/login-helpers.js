@@ -13,7 +13,7 @@ module.exports = {
             } else {
                 userData.password = await bcrypt.hash(userData.password, 10)
                 await model.create({ email: userData.email, password: userData.password, name: userData.name, role: userData.role }).then((data) => {
-                    resolve({ status: false })
+                    resolve({ status: true ,data})
                 })
             }
             
