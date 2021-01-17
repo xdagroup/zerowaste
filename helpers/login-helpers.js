@@ -3,12 +3,20 @@ const model = require('../database/user-model')
 const bcrypt = require('bcrypt')
 module.exports = {
     doSignup: (userData) => {
-        console.log(userData)
+        // console.log(userData)
+        
         return new Promise(async (resolve, reject) => {
-            userData.password = await bcrypt.hash(userData.password, 10)
-            await model.create({ email: userData.email, password: userData.password, name:userData.name, role:userData.role }).then((data) => {
-                resolve(data)
-            })
+            let user = await model.findOne({ email: userData.email })
+            if (user) {
+                console.log("Signup Failed")
+                resolve({ status: false })
+            } else {
+                userData.password = await bcrypt.hash(userData.password, 10)
+                await model.create({ email: userData.email, password: userData.password, name: userData.name, role: userData.role }).then((data) => {
+                    resolve({ status: false })
+                })
+            }
+            
         })
     },
     doLogin: (userData) => {
