@@ -2,7 +2,23 @@
     <span class="navbar-brand mb-0 h1">Donor Dashboard</span>
     <a href='/logout' class="btn btn-danger">Logout</a>
 </nav>
-<h1>Successfully Logged In</h1>
+{{donorMessage}}
+{{!-- <h1>Successfully Logged In</h1> --}}
 
 <p>Hi {{user.name}}</p>
 <p>Thanks for being a donor</p>
+<form action="donor/addfood" method="post">
+    <div class="form-group">
+        <label class="input_title">Total Food Cooked</label>
+        <input type='text' name='totalFoodCooked' id='totalFoodCooked' required="required" >
+    </div>
+    <div class="form-group">
+        <label class="input_title">Wasted Food Quantity</label>
+        <input type='text' name='foodWasteQty' required="required">
+    </div>
+    <div class="form-group">
+        <label class="input_title">Food Pickup Time</label>
+        <input type="datetime-local" name='pickUpTime' id='pickUpTime' required="required">
+    </div>
+    <button>Submit</button>
+</form>

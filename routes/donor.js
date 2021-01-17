@@ -1,5 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var donorHelper = require('../helpers/donor-helpers');
+
+var donorMessage=""
 const verifyLogin = (req, res, next) => {
     if (req.session.loggedIn) {
         next()
@@ -16,7 +19,19 @@ const verifyRole = (req, res, next) => {
 }
 router.get('/', verifyLogin, verifyRole, function (req, res, next) {
     let user = req.session.user
-    res.render('donor/home',{user});
+    res.render('donor/home', { user, donorMessage });
+    donorMessage = ""
+});
+router.post('/addfood', verifyLogin, verifyRole,function (req, res, next) {
+    let user = req.session.user._id
+    req.body.user=user
+    donorHelper.addFood(req.body).then((response) => {
+        if (response.status) {
+            donorMessage = "Food Added Successfully"
+            res.redirect('/donor')
+            
+        }
+    })
 });
 
 module.exports = router;
