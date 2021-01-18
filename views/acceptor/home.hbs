@@ -5,3 +5,34 @@
 <h1>Successfully Logged In</h1>
 <p>Hi {{user.name}}</p>
 <p>Thanks for being an acceptor</p>
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Total Food</th>
+            <th scope="col">Waste Food</th>
+            <th scope="col">Pickup Time</th>
+            <th scope="col">Donor</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        {{#each response}}
+        
+        <tr>
+            <th scope="row">{{@index}}</th>
+            <td>{{this.totalFoodCooked}}</td>
+            <td>{{this.foodWasteQty}}</td>
+            <td>{{this.pickUpTime}}</td>
+            {{#each this.user}} 
+            <td>{{this.name}}<br>{{this.email}}</td>
+           
+            {{/each}}
+
+        </tr>
+        
+        {{/each}}
+
+    </tbody>
+</table>

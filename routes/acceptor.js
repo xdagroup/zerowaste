@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var acceptorHelper = require('../helpers/acceptor-helpers')
 
 const verifyLogin = (req, res, next) => {
     if (req.session.loggedIn) {
@@ -18,7 +19,12 @@ const verifyRole = (req, res, next) => {
 
 router.get('/', verifyLogin,verifyRole, function (req, res, next) {
     let user = req.session.user
-    res.render('acceptor/home',{user});
+    acceptorHelper.getAllFood().then((response) => {
+        res.render('acceptor/home', { user,response });
+    })
+    
+
+    
 });
 
 module.exports = router;

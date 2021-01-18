@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema
 
 var foodSchema = new mongoose.Schema({
     uid: {
-        type: String,
+        type: Schema.Types.ObjectId,
         required: true,
     },
     totalFoodCooked: {
