@@ -25,5 +25,11 @@ module.exports = {
 
             resolve(foodList)
         })
+    },
+    getAcceptorList: () => {
+        return new Promise(async (resolve, reject) => {
+            let mailList = await userModel.find({ role: "acceptor" })
+            resolve(mailList)
+        })
     }
 }

@@ -1,4 +1,5 @@
 const foodModel = require('../database/food-model')
+var nodemailer = require('nodemailer');
 
 module.exports = {
     addFood: (userData)=>{
@@ -14,5 +15,35 @@ module.exports = {
            
             resolve(foodList)
         })
+    },
+    sendEmail: (acceptorData) => {
+        let mailList=''
+        for (user in acceptorData) {
+            mailList=mailList+acceptorData[user].email+','
+            
+        }
+     
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'healthbotgh014@gmail.com',
+                pass: '6238348643'
+            }
+        });
+
+        var mailOptions = {
+            from: 'healthbotgh014@gmail.com',
+            to: mailList,
+            subject: 'Donor Added Food',
+            text: 'Hey New Food Added!'
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
     }
 }
