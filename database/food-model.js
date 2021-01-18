@@ -17,6 +17,9 @@ var foodSchema = new mongoose.Schema({
     pickUpTime: {
         type: Date,
         required: true
+    },
+    status: {
+        type:String
     }
 });
 var foodModel = mongoose.model('Food', foodSchema)

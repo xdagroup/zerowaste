@@ -11,6 +11,7 @@
             <th scope="col">Total Food</th>
             <th scope="col">Waste Food</th>
             <th scope="col">Pickup Time</th>
+            <th scope="col">Status</th>
            
         </tr>
     </thead>
@@ -21,7 +22,8 @@
             <th scope="row">{{@index}}</th>
             <td>{{this.totalFoodCooked}}</td>
             <td>{{this.foodWasteQty}}</td>
-            <td>{{this.pickUpTime}}</td>     
+            <td>{{this.pickUpTime}}</td>
+            <td>{{this.status}}</td>
            
         </tr>
         {{/each}}

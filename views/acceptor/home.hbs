@@ -27,8 +27,17 @@
             <td>{{this.pickUpTime}}</td>
             {{#each this.user}} 
             <td>{{this.name}}<br>{{this.email}}</td>
-           
             {{/each}}
+           <td>
+               {{#if status}}
+            <a class="btn btn-primary">Accepted</a>
+               
+            {{else}}
+            <a href="/acceptor/accept/{{this._id}}" class="btn btn-danger"
+            onClick="return confirm('Do you want to Accept?')">Accept</a>
+            {{/if}}
+            </td>
+            
 
         </tr>
         

@@ -22,9 +22,16 @@ router.get('/', verifyLogin,verifyRole, function (req, res, next) {
     acceptorHelper.getAllFood().then((response) => {
         res.render('acceptor/home', { user,response });
     })
-    
+});
+
+router.get('/accept/:id', (req, res) => {
+    let id = req.params.id
+    acceptorHelper.acceptFood(id).then(() => {
+        res.redirect('/acceptor')
+        console.log('accepted')
+    })
 
     
-});
+})
 
 module.exports = router;

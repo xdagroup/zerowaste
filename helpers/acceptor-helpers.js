@@ -1,6 +1,6 @@
 const foodModel = require('../database/food-model')
 const userModel = require('../database/user-model')
-
+var objectId = require('mongodb').ObjectID
 module.exports = {
     getAllFood: () => {
         return new Promise(async (resolve, reject) => {
@@ -30,6 +30,17 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             let mailList = await userModel.find({ role: "acceptor" })
             resolve(mailList)
+        })
+    },
+    acceptFood: (foodId) => {
+        return new Promise(async (resolve, reject) => {
+            await foodModel.updateOne({ _id: objectId(foodId)}, {
+                $set: {
+                    status:'Accepted'
+                }
+            }).then((response) => {
+                resolve(response)
+            })
         })
     }
 }
