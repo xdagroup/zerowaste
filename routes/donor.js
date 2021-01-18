@@ -30,7 +30,7 @@ router.post('/addfood', verifyLogin, verifyRole, async (req, res, next)=> {
     donorHelper.addFood(req.body).then(async(response) => {
         if (response.status) {
             let acceptorList = await acceptorHelper.getAcceptorList()
-            donorHelper.sendEmail(acceptorList)
+            // donorHelper.sendEmail(acceptorList)
             donorMessage = "Food Added Successfully"
             res.redirect('/donor')
         }

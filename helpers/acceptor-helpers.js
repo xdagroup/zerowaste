@@ -15,7 +15,7 @@ module.exports = {
                 {
                     $lookup: {
                         from: "users", // collection to join
-                        localField: "uid",//field from the input documents
+                        localField: "donorId",//field from the input documents
                         foreignField: "_id",//field from the documents of the "from" collection
                         as: "user"// output array field
                     }
@@ -32,15 +32,24 @@ module.exports = {
             resolve(mailList)
         })
     },
-    acceptFood: (foodId) => {
+    acceptFood: (foodId,userId) => {
         return new Promise(async (resolve, reject) => {
             await foodModel.updateOne({ _id: objectId(foodId)}, {
                 $set: {
-                    status:'Accepted'
+                    status: 'Accepted',
+                    acceptorId: userId
+                    
                 }
             }).then((response) => {
                 resolve(response)
             })
+        })
+    },
+    getAllAcceptedFood: (user) => {
+        return new Promise(async (resolve, reject) => {
+            let foodList = await foodModel.find({ acceptorId: user })
+
+            resolve(foodList)
         })
     }
 }

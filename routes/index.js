@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var loginHelper = require('../helpers/login-helpers')
-
+var userHelper = require('../helpers/user-helpers')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -65,5 +65,13 @@ router.post('/login', async (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy()
   res.redirect('/')
+})
+router.get('/profile/:id', (req, res) => {
+  let userId = req.params.id
+  userHelper.findUser(userId).then((response) => {
+    
+    res.render('profile',{response})
+  })
+  
 })
 module.exports = router;

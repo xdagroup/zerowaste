@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var bodyParser = require('body-parser');
+
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 var donorRouter = require('./routes/donor');
 var acceptorRouter = require('./routes/acceptor');
 const mongoose = require('mongoose');
@@ -28,8 +30,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: "Key", cookie: { maxAge: 6000000 } }))
 
+app.use(bodyParser());
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 app.use('/donor', donorRouter);
 app.use('/acceptor', acceptorRouter);
 // catch 404 and forward to error handler

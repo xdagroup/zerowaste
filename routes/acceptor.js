@@ -26,12 +26,21 @@ router.get('/', verifyLogin,verifyRole, function (req, res, next) {
 
 router.get('/accept/:id', (req, res) => {
     let id = req.params.id
-    acceptorHelper.acceptFood(id).then(() => {
+    let userId = req.session.user._id
+    acceptorHelper.acceptFood(id, userId).then(() => {
         res.redirect('/acceptor')
         console.log('accepted')
     })
-
-    
 })
+router.get('/list', verifyLogin, verifyRole, (req, res) => {
+        let user = req.session.user._id
+        acceptorHelper.getAllAcceptedFood(user).then((response) => {
+            console.log("Fetched All Food");
+
+            res.render('acceptor/dashboard', { response });
+        })
+    })
+    
+
 
 module.exports = router;

@@ -1,5 +1,6 @@
 <nav class="navbar navbar-light bg-danger">
     <span class="navbar-brand mb-0 h1">Acceptor Dashboard</span>
+    <a href="acceptor/list" class="btn btn-primary">Dashboard</a>
     <a href='/logout' class="btn btn-danger">Logout</a>
 </nav>
 <h1>Successfully Logged In</h1>
@@ -28,6 +29,9 @@
             {{#each this.user}} 
             <td>{{this.name}}<br>{{this.email}}</td>
             {{/each}}
+            <td>
+            <td><a href="/profile/{{this.donorId}}" class="btn btn-secondary">Donor Profile</a></td>
+            </td>
            <td>
                {{#if status}}
             <a class="btn btn-primary">Accepted</a>
@@ -37,6 +41,7 @@
             onClick="return confirm('Do you want to Accept?')">Accept</a>
             {{/if}}
             </td>
+            
             
 
         </tr>
