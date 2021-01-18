@@ -3,7 +3,12 @@
     <a href='/acceptor' class="navbar-brand mb-0 h1">Acceptor Dashboard</a>
     <a href='/logout' class="btn btn-danger">Logout</a>
 </nav>
-
+{{!-- <style>
+    .image-food:hover {
+        transform: scale(2);
+        
+    }
+</style> --}}
 <table class="table mt-5">
     <thead>
         <tr>
@@ -11,7 +16,7 @@
             <th scope="col">Total Food</th>
             <th scope="col">Waste Food</th>
             <th scope="col">Pickup Time</th>
-          
+        <th scope="col">Image</th>
            
         </tr>
     </thead>
@@ -23,6 +28,7 @@
             <td>{{this.totalFoodCooked}}</td>
             <td>{{this.foodWasteQty}}</td>
             <td>{{this.pickUpTime}}</td>
+            <td><img style="width:100px;height:100px;" src="/food-images/{{this._id}}.jpg" class="image-food"></td>
             <td><a href="/profile/{{this.donorId}}" class="btn btn-primary">Donor Profile</a></td>
             
           

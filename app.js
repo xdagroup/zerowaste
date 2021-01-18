@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config()
 var bodyParser = require('body-parser');
-
+var fileUpload = require('express-fileupload');
 var indexRouter = require('./routes/index');
 
 var donorRouter = require('./routes/donor');
@@ -28,9 +28,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload());
 app.use(session({ secret: "Key", cookie: { maxAge: 6000000 } }))
 
 app.use(bodyParser());
+
+// app.configure(function () {
+//   app.use(express.methodOverride());
+//   app.use(express.bodyParser({ keepExtensions: true, uploadDir: path.join(__dirname, '/files')}));
+
+// });
 app.use('/', indexRouter);
 
 app.use('/donor', donorRouter);

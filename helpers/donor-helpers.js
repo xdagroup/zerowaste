@@ -5,7 +5,9 @@ module.exports = {
     addFood: (userData)=>{
         return new Promise(async (resolve, reject) => {
             await foodModel.create({ donorId: userData.user, totalFoodCooked: userData.totalFoodCooked, foodWasteQty: userData.foodWasteQty, pickUpTime: userData.pickUpTime}).then((data) => {
-                resolve({ status: true })
+                console.log("Returned Data")
+                console.log(data._id)
+                resolve({ status: true,id:data._id })
             })
         })
     },

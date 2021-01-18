@@ -2,6 +2,9 @@ var express = require('express');
 var router = express.Router();
 var donorHelper = require('../helpers/donor-helpers');
 var acceptorHelper = require('../helpers/acceptor-helpers')
+// var formidable = require('formidable');
+// var multer = require('multer');
+// var upload = multer({ dest: 'public/food-images' });
 
 var donorMessage=""
 const verifyLogin = (req, res, next) => {
@@ -26,9 +29,38 @@ router.get('/', verifyLogin, verifyRole, async (req, res, next)=> {
 });
 router.post('/addfood', verifyLogin, verifyRole, async (req, res, next)=> {
     let user = req.session.user._id
-    req.body.user=user
+    req.body.user = user
+    // console.log("Files")
+    // console.log(req.files)
+    // upload.single('image')
+
+    
     donorHelper.addFood(req.body).then(async(response) => {
         if (response.status) {
+            // var form = new formidable.IncomingForm();
+            // console.log("Form")
+            // console.log(form)
+            // form.parse(req, function (err, fields, files) {
+            //     var oldpath = files.filetoupload.path;
+            //     console.log("Old Path")
+            //     console.log(oldpath)
+            //     var newpath = './public/food-images/' + files.filetoupload.name;
+            //     fs.rename(oldpath, newpath, function (err) {
+            //         if (err) throw err;
+            //         console.log('File uploaded and moved!');
+            //         // res.end();
+            //     });
+            // })
+            // console.log(req.files)
+            let image = req.files.image
+            console.log("ID"+response.id)
+            image.mv('./public/food-images/' + response.id + '.jpg' , (err) => {
+                if (!err) {
+                    console.log("Upload Success")
+                } else {
+                    console.log(err);
+                }
+            })
             let acceptorList = await acceptorHelper.getAcceptorList()
             // donorHelper.sendEmail(acceptorList)
             donorMessage = "Food Added Successfully"
