@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+require('dotenv').config()
 var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
@@ -11,7 +11,7 @@ var indexRouter = require('./routes/index');
 var donorRouter = require('./routes/donor');
 var acceptorRouter = require('./routes/acceptor');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://mongodbuser:xdadevelopers@cluster0-shard-00-00.hciac.mongodb.net:27017,cluster0-shard-00-01.hciac.mongodb.net:27017,cluster0-shard-00-02.hciac.mongodb.net:27017/zerowaste?ssl=true&replicaSet=atlas-2o2tzg-shard-0&authSource=admin&retryWrites=true&w=majority', {
+mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true, useUnifiedTopology: true
 })
 
