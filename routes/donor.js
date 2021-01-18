@@ -2,9 +2,7 @@ var express = require('express');
 var router = express.Router();
 var donorHelper = require('../helpers/donor-helpers');
 var acceptorHelper = require('../helpers/acceptor-helpers')
-// var formidable = require('formidable');
-// var multer = require('multer');
-// var upload = multer({ dest: 'public/food-images' });
+
 
 var donorMessage=""
 const verifyLogin = (req, res, next) => {
@@ -37,21 +35,6 @@ router.post('/addfood', verifyLogin, verifyRole, async (req, res, next)=> {
     
     donorHelper.addFood(req.body).then(async(response) => {
         if (response.status) {
-            // var form = new formidable.IncomingForm();
-            // console.log("Form")
-            // console.log(form)
-            // form.parse(req, function (err, fields, files) {
-            //     var oldpath = files.filetoupload.path;
-            //     console.log("Old Path")
-            //     console.log(oldpath)
-            //     var newpath = './public/food-images/' + files.filetoupload.name;
-            //     fs.rename(oldpath, newpath, function (err) {
-            //         if (err) throw err;
-            //         console.log('File uploaded and moved!');
-            //         // res.end();
-            //     });
-            // })
-            // console.log(req.files)
             let image = req.files.image
             console.log("ID"+response.id)
             image.mv('./public/food-images/' + response.id + '.jpg' , (err) => {
