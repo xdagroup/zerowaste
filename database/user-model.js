@@ -17,6 +17,12 @@ var userSchema = new mongoose.Schema({
     role: {
         type: String,
         required: true
+    },
+    latitude: {
+        type: String    
+    },
+    longitude: {
+        type: String
     }
 });
 var userModel = mongoose.model('User', userSchema)

@@ -15,6 +15,7 @@
             <th scope="col">Pickup Time</th>
             <th scope="col">Image</th>
             <th scope="col">Donor</th>
+            
 
         </tr>
     </thead>
@@ -30,15 +31,19 @@
             <td>{{this.pickUpTime}}</td>
             <td><img style="width:100px;height:100px;" src="/food-images/{{this._id}}.jpg" class="image-food"></td>
             {{#each this.user}} 
-            <td>{{this.name}}<br>{{this.email}}</td>
+            <td>{{this.name}}<br>{{this.email}}
+            {{#if this.latitude}}
+            <br>
+            <a href="https://www.openstreetmap.org/#map=19/{{this.latitude}}/{{this.longitude}}" class="btn btn-danger">Donor Location</a>
+            {{/if}}
             {{/each}}
+            </td>
             <td>
             <td><a href="/profile/{{this.donorId}}" class="btn btn-secondary">Donor Profile</a></td>
             </td>
            <td>
             <a href="/acceptor/accept/{{this._id}}" class="btn btn-danger"
             onClick="return confirm('Do you want to Accept?')">Accept</a>
-            
             </td>
             
             

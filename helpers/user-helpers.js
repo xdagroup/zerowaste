@@ -8,6 +8,9 @@ module.exports = {
             resolve(userProfile)
 
         })
+    },
+    getLocation: () => {
+        
     }
     
 }
