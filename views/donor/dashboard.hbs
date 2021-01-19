@@ -29,7 +29,10 @@
             {{#if this.status}}
             <td><a href="/profile/{{this.acceptorId}}" class="btn btn-primary">Acceptor Profile</a></td>
            {{else}}
-           <td><a href='/donor/edit-product/{{this._id}}' class="btn btn-danger">Edit</a></td>
+           <td><a href='/donor/edit-product/{{this._id}}' class="btn btn-success">Edit</a>
+                <a href="/donor/delete-food/{{this._id}}" class="btn btn-danger"
+                                    onClick="return confirm('Do you want to delete?')">Delete</a></td>
+
            {{/if}}
            
         </tr>

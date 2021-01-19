@@ -66,12 +66,18 @@ router.get('/edit-product/:id', async (req, res) => {
 router.post('/edit-product/:id', (req, res) => {
     let id = req.params.id
     donorHelper.updateFood(req.params.id, req.body).then(() => {
-        res.redirect('/donor')
+        res.redirect('/donor/list')
         if (req.files.image) {
             let image = req.files.image
             image.mv('./public/food-images/' + id + '.jpg')
         }
     })
 })
-
+router.get('/delete-food/:id', (req, res) => {
+    let foodId = req.params.id
+    
+    donorHelper.deleteFood(foodId).then((response) => {
+        res.redirect('/donor/list')
+    })
+})
 module.exports = router;

@@ -67,5 +67,12 @@ module.exports = {
             })
         })
 
+    },
+    deleteFood: (foodId) => {
+        return new Promise((resolve, reject) => {
+            foodModel.deleteOne({ _id: foodId }).then((response) => {
+                resolve(response)
+            })
+        })
     }
 }
