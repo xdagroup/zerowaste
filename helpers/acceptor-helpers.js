@@ -5,13 +5,6 @@ module.exports = {
     getAllFood: () => {
         return new Promise(async (resolve, reject) => {
             let foodList = await foodModel.aggregate([
-            //     {
-            //     $group:
-            //     {
-            //         _id: "$uid",
-            //         totalFoodCooked: { $first: "totalFoodCooked"}
-            //     }
-            // },
                 {
                     $lookup: {
                         from: "users", // collection to join
