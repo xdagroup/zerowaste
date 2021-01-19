@@ -15,7 +15,7 @@ var foodSchema = new mongoose.Schema({
         required: true
     },
     pickUpTime: {
-        type: Date,
+        type: String,
         required: true
     },
     status: {

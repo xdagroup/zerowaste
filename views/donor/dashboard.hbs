@@ -28,7 +28,10 @@
             <td>{{this.status}}</td>
             {{#if this.status}}
             <td><a href="/profile/{{this.acceptorId}}" class="btn btn-primary">Acceptor Profile</a></td>
+           {{else}}
+           <td><a href='/donor/edit-product/{{this._id}}' class="btn btn-danger">Edit</a></td>
            {{/if}}
+           
         </tr>
         {{/each}}
 

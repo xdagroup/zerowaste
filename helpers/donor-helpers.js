@@ -47,5 +47,25 @@ module.exports = {
                 console.log('Email sent: ' + info.response);
             }
         });
+    },
+    getFoodDetails: (id) => {
+        return new Promise(async (resolve, reject) => {
+            let food = await foodModel.findOne({ _id: id })
+            resolve(food)
+        })
+    },
+    updateFood: (foodId, foodDetails) => {
+        return new Promise((resolve, reject) => {
+            foodModel.updateOne({ _id: foodId }, {
+                $set: {
+                    totalFoodCooked: foodDetails.totalFoodCooked,
+                    foodWasteQty: foodDetails.foodWasteQty,
+                    pickUpTime: foodDetails.pickUpTime
+                }
+            }).then((response) => {
+                resolve(response)
+            })
+        })
+
     }
 }
