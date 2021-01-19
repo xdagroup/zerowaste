@@ -2,3 +2,29 @@
     <span class="navbar-brand mb-0 h1">Mission Zero Waste</span>
     <a href='/login' class="btn btn-danger">Login</a>
 </nav>
+<div class="counter_wrapper">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="count_box box_hover">
+                    <h3><span class="timer">{{response.donor}}</span></h3>
+                    <h4>DONORS</h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="count_box box_center">
+                    <h3><span class="timer">{{response.food}}</span></h3>
+                    <h4>REGISTERED FOODS</h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="count_box box_hover">
+                    <h3><span class="timer">{{response.acceptor}}</span></h3>
+                    <h4>ACCEPTORS</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

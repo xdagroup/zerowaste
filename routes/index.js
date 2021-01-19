@@ -8,7 +8,10 @@ let nodeGeocoder = require('node-geocoder');
 router.get('/', function (req, res, next) {
   let user = req.session.user
   console.log(user)
-  res.render('index');
+  userHelper.getCount().then((response) => {
+    res.render('index',{response});
+  })
+  
 });
 router.get('/login', function (req, res, next) {
   if (req.session.loggedIn) {
