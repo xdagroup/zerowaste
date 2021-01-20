@@ -812,15 +812,29 @@ p {
 
 /* LOGIN FORM LOGIN PAGE */
 .login-form {
-  padding-top: 25vh; }
+  padding-top: 14vh; }
 .form-label{
   color:white;
 }
-.loginform-signup{
+.loginform-link{
   color:rgb(138, 218, 218);
 }
-.loginform-signup:hover{
+.loginform-link:hover{
   color:white;
+}
+.form-page-image {
+  padding-top: 10px; }
+  .form-page-image img {
+    max-width: 450px; }
+    @media (max-width: 767px) {
+      .form-page-image img {
+        max-width: 100%; } }
+  /* @media (max-width: 767px) {
+    .form-page-image {
+      padding-top: 30px; } } */
+
+.login-page{
+  display: flex;
 }
 /*===========================
       03.BRAND css 
