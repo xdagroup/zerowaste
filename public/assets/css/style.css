@@ -836,6 +836,12 @@ p {
 .login-page{
   display: flex;
 }
+.bg-image {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh; }
 /*===========================
       03.BRAND css 
 ===========================*/
