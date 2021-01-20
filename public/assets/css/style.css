@@ -816,6 +816,14 @@ p {
 .form-label{
   color:white;
 }
+.form-error{
+  color:white;
+  background-color: rgb(235, 98, 98);
+  padding: 10px;
+  border-radius: 1rem;
+  text-align: center;
+  margin:5px;
+}
 .loginform-link{
   color:rgb(138, 218, 218);
 }
