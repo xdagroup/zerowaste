@@ -1,56 +1,108 @@
-<nav class="navbar navbar-light bg-danger">
-    <span class="navbar-brand mb-0 h1">Acceptor Dashboard</span>
-    <a href="acceptor/list" class="btn btn-primary">Dashboard</a>
-    <a href='/logout' class="btn btn-danger">Logout</a>
-</nav>
-<h1>Successfully Logged In</h1>
-<p>Hi {{user.name}}</p>
-<p>Thanks for being an acceptor</p>
-<table class="table mt-5">
-    <thead>
-        <tr>
-            {{!-- <th scope="col">#</th> --}}
-            <th scope="col">Total Food</th>
-            <th scope="col">Waste Food</th>
-            <th scope="col">Pickup Time</th>
-            <th scope="col">Image</th>
-            <th scope="col">Donor</th>
-            
 
-        </tr>
-    </thead>
-    <tbody>
+<header class="header-area">
+    <div class="navbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="/assets/images/logo.svg" alt="Logo">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
 
-        {{#each response}}
-        {{#if status}}
-        {{else}}
-        <tr>
-            {{!-- <th scope="row">{{@index}}</th> --}}
-            <td>{{this.totalFoodCooked}}</td>
-            <td>{{this.foodWasteQty}}</td>
-            <td>{{this.pickUpTime}}</td>
-            <td><img style="width:100px;height:100px;" src="/food-images/{{this._id}}.jpg" class="image-food"></td>
-            {{#each this.user}} 
-            <td>{{this.name}}<br>{{this.email}}
-            {{#if this.latitude}}
-            <br>
-            <a href="https://www.openstreetmap.org/#map=19/{{this.latitude}}/{{this.longitude}}" class="btn btn-danger">Donor Location</a>
-            {{/if}}
-            {{/each}}
-            </td>
-            <td>
-            <td><a href="/profile/{{this.donorId}}" class="btn btn-secondary">Donor Profile</a></td>
-            </td>
-           <td>
-            <a href="/acceptor/accept/{{this._id}}" class="btn btn-danger"
-            onClick="return confirm('Do you want to Accept?')">Accept</a>
-            </td>
-            
-            
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                            <ul id="nav" class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="page-scroll" href="#home">Home</a>
+                                </li>
 
-        </tr>
-        {{/if}}
-        {{/each}}
+                            </ul>
+                        </div> <!-- navbar collapse -->
 
-    </tbody>
-</table>
+                        <div class="navbar-btn d-none d-sm-inline-block">
+                            <a class="main-btn" data-scroll-nav="0" href="/logout" rel="nofollow">LOGOUT</a>
+                        </div>
+                    </nav> <!-- navbar -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- navbar area -->
+    <div id="home" class="header-hero bg-image" style="background-image: url(/assets/images/banner-bg.svg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-content table-responsive">
+                        <div class="home-head col-12 col-md-10">
+                            <p class="user-name">Hi {{user.name}}</p>
+                            <a class="main-btn " data-scroll-nav="0" href="acceptor/list" rel="nofollow">DASHBOARD</a>
+                        </div>
+                        <p class="page-head">AVAILABLE FOODS</p>
+                        <table class="table table-borderless list-table">
+                            <thead>
+                                <tr>
+                                    
+                                    <th scope="col" class="total-food">Total Food</th>
+                                    <th scope="col" class="waste-food">Waste Food</th>
+                                    <th scope="col" class="pickup-time">Pickup Time</th>
+                                    <th scope="col" class="food-img">Image</th>
+                                    <th scope="col" class="donor-head">Donor</th>
+                        
+                        
+                                </tr>
+                            </thead>
+                            <tbody>
+                        
+                                {{#each response}}
+                                {{#if status}}
+                                {{else}}
+                                <tr>
+                        
+                                    <td class="total-food">{{this.totalFoodCooked}}</td>
+                                    <td class="waste-food">{{this.foodWasteQty}}</td>
+                                    <td class="pickup-time">{{this.pickUpTime}}</td>
+                                    <td class="food-img"><img style="width:100px;height:100px;" src="/food-images/{{this._id}}.jpg" class=""></td>
+                                    {{#each this.user}}
+                                    <td class="food-donor">
+                                        {{!-- {{this.name}}<br>{{this.email}} --}}
+                                  
+                                    <a href="/profile/{{this.donorId}}" class="btn btn-primary">Donor Profile</a>
+                                        {{#if this.latitude}}
+                                        <br>
+                                        <a href="https://www.openstreetmap.org/#map=19/{{this.latitude}}/{{this.longitude}}"
+                                            class="btn btn-success mt-2">Donor Location</a>
+                                        {{/if}}
+                                        {{/each}}
+                                    </td>
+                                    
+                                    <td class="table-actions">
+                                    
+                                        <a href="/acceptor/accept/{{this._id}}" class="btn btn-danger"
+                                            onClick="return confirm('Do you want to Accept?')">Accept</a>
+                                    </td>
+                        
+                        
+                        
+                                </tr>
+                                {{/if}}
+                                {{/each}}
+                        
+                            </tbody>
+                        </table>
+
+
+
+
+                    </div> <!-- header hero content -->
+                </div>
+            </div> <!-- row -->
+
+        </div> <!-- container -->
+        <div id="particles-1" class="particles"></div>
+    </div> <!-- header hero -->
+</header>

@@ -899,14 +899,14 @@ input[type=file]::-webkit-file-upload-button:hover {
   color:white;
   padding:1px !important;
 }
-.waste-food, .food-img, .pickup-time, .status{
+.waste-food, .food-img, .pickup-time, .status, .food-donor{
 	background-color: rgb(30, 50, 138);
   vertical-align: middle !important;
   color:white;
   padding:1px !important;
 
 }
-.table-actions{
+.table-actions, .donor-head, .table-end{
 	border-radius: 0 25px 25px 0; 
 	background-color: rgb(30, 50, 138);
 	vertical-align: middle !important;

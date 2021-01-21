@@ -69,7 +69,7 @@ router.post('/login', async (req, res) => {
 // })
 router.get('/logout', (req, res) => {
   req.session.destroy()
-  res.redirect('/')
+  res.redirect('/login')
 })
 router.get('/profile/:id', (req, res) => {
   let userId = req.params.id
