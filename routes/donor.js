@@ -53,9 +53,10 @@ router.post('/addfood', verifyLogin, verifyRole, async (req, res, next)=> {
 });
 router.get('/list', verifyLogin, verifyRole, (req, res) => {
     let user = req.session.user._id
+    let userDetails = req.session.user
     donorHelper.getAllFood(user).then((response) => {
         console.log("Fetched All Food");
-        res.render('donor/dashboard', { response });
+        res.render('donor/dashboard', { response, userDetails });
     })
 })
 

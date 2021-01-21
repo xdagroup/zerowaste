@@ -1,4 +1,4 @@
-
+{{!-- 
 <nav class="navbar navbar-light bg-danger">
     <span class="navbar-brand mb-0 h1">Donor Dashboard</span>
     <a href='/logout' class="btn btn-danger">Logout</a>
@@ -39,4 +39,96 @@
         {{/each}}
 
     </tbody>
-</table>
+</table> --}}
+
+<header class="header-area">
+    <div class="navbar-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <a class="navbar-brand" href="index.html">
+                            <img src="/assets/images/logo.svg" alt="Logo">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                            <span class="toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                            <ul id="nav" class="navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="page-scroll" href="#home">Home</a>
+                                </li>
+                             
+                            </ul>
+                        </div> <!-- navbar collapse -->
+
+                        <div class="navbar-btn d-none d-sm-inline-block">
+                            <a class="main-btn" data-scroll-nav="0" href="/logout" rel="nofollow">LOGOUT</a>
+                        </div>
+                    </nav> <!-- navbar -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- navbar area -->
+    <div id="home" class="header-hero bg-image" style="background-image: url(/assets/images/banner-bg.svg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-content table-responsive">
+                        <div class="home-head col-12 col-md-10">
+                            {{!-- <p class="user-name">Hi {{userDetails.name}}</p> --}}
+                            <a class="main-btn " data-scroll-nav="0" href="/donor" rel="nofollow">DONATE FOOD</a>
+                        </div>
+                        <p class="page-head">DASHBOARD</p>
+                        <table class="table table-borderless list-table">
+                            <thead>
+                                <tr>
+                                    
+                                    <th scope="col" class="total-food">Total Food</th>
+                                    <th scope="col" class="waste-food">Waste Food</th>
+                                    <th scope="col" class="pickup-time">Pickup Time</th>
+                                    <th scope="col" class="food-img">Image</th>
+                                    <th scope="col" class="table-actions">Status</th>
+                                    {{!-- <th class="table-actions"></th> --}}
+                                </tr>
+                            </thead>
+                            <tbody>
+                        
+                                {{#each response}}
+                                <tr>
+                                    
+                                    <td class="total-food">{{this.totalFoodCooked}}</td>
+                                    <td class="waste-food">{{this.foodWasteQty}}</td>
+                                    <td class="pickup-time">{{this.pickUpTime}}</td>
+                                    <td class="food-img"><img style="width:100px;height:100px;" src="/food-images/{{this._id}}.jpg" class=""></td>
+                                    <td class="status">{{this.status}}</td>
+                                    {{#if this.status}}
+                                    <td class="table-actions"><a href="/profile/{{this.acceptorId}}" class="btn btn-primary">Acceptor Profile</a></td>
+                                    {{else}}
+                                    <td class="table-actions"><a href='/donor/edit-product/{{this._id}}' class="btn btn-success">Edit</a>
+                                        <a href="/donor/delete-food/{{this._id}}" class="btn btn-danger"
+                                            onClick="return confirm('Do you want to delete?')">Delete</a>
+                                    </td>
+                        
+                                    {{/if}}
+                        
+                                </tr>
+                                {{/each}}
+                        
+                            </tbody>
+                        </table>
+
+                        
+                    </div> <!-- header hero content -->
+                </div>
+            </div> <!-- row -->
+           
+        </div> <!-- container -->
+        <div id="particles-1" class="particles"></div>
+    </div> <!-- header hero -->
+</header>

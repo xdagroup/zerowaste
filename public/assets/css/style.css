@@ -816,6 +816,13 @@ p {
   padding-top: 14vh; }
 .form-label{
   color:white;
+  background:rgb(57, 81, 185);
+  border-radius: 1rem;
+  padding:10px;
+
+}
+.small-form-label{
+  color:white;
 }
 .form-message{
   color:white;
@@ -885,6 +892,40 @@ input[type=file]::-webkit-file-upload-button:hover {
   color:white;
   padding:50px;
 }
+.total-food{
+	border-radius: 25px 0 0 25px; 
+	background-color: rgb(30, 50, 138);
+	vertical-align: middle !important;
+  color:white;
+  padding:1px !important;
+}
+.waste-food, .food-img, .pickup-time, .status{
+	background-color: rgb(30, 50, 138);
+  vertical-align: middle !important;
+  color:white;
+  padding:1px !important;
+
+}
+.table-actions{
+	border-radius: 0 25px 25px 0; 
+	background-color: rgb(30, 50, 138);
+	vertical-align: middle !important;
+	align-items: center;
+  text-align: center;
+  color:white;
+	
+}
+.list-table{
+  width: 100%; 
+  text-align: center; 
+  border-spacing:0 15px; 
+  border-collapse:separate; 
+  border-spacing:0 15px;
+  vertical-align: middle;
+  
+}
+.page-content {
+  padding-top: 14vh; }
 /*===========================
       03.BRAND css 
 ===========================*/
