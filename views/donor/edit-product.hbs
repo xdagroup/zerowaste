@@ -80,30 +80,99 @@
                             <a class="main-btn mt-2" data-scroll-nav="0" href="/donor" rel="nofollow">DONATE FOOD</a>
                         </div>
                         <p class="page-head">EDIT FOOD</p>
-                        <form class="col-12 col-md-6 col-lg-4" action="/donor/edit-product/{{food._id}}" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label class="form-label" for="">Total Cooked Food</label>
-                            <input type="text" name="totalFoodCooked" class="form-control" value="{{food.totalFoodCooked}}">
+                    
 
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="">Food Waste Qty</label>
-                            <input type="text" name="foodWasteQty" class="form-control" value="{{food.foodWasteQty}}">
-
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="">Pickup Time</label>
-                            <input type="datetime-local" name="pickUpTime" class="form-control" value="{{food.pickUpTime}}">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="">Image</label>
-                            <img src="/food-images/{{food._id}}.jpg" alt="" style="width:100px;height:auto" id="imgView" class="pt-3">
-                            <input type="file" name="image" class="form-control upload-btn" onchange="viewImage(event)">
-                        </div>
+                        <form name="donateForm" class="" action="/donor/edit-product/{{food._id}}" method="post" enctype="multipart/form-data">
                             
-                        
-                            <button type="submit" class="btn btn-success mt-4">Submit</button>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label">
+                                    <p class="form-label">Quantity Cooked</p>
+                                </label>
+                                <div class="col-10 col-md-5">
+                                    <input type='number' class="form-control" name='totalFoodCooked' id='totalFoodCooked' required="required"
+                                        value="{{food.totalFoodCooked}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label">
+                                    <p class="form-label">Quantity Wasted</p>
+                                </label>
+                                <div class="col-10 col-md-5">
+                                    <input type='number' class="form-control" name='foodWasteQty' required="required"
+                                        value="{{food.foodWasteQty}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label">
+                                    <p class="form-label">Pickup Time</p>
+                                </label>
+                                <div class="col-10 col-md-5">
+                                    <input type="datetime-local" class="form-control" name='pickUpTime' id='pickUpTime' required="required" value="{{food.pickUpTime}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label" for="">
+                                    <p class="form-label">Image</p>
+                                </label>
+                                <div class="col-10 col-md-5">
+                                    <img src="/food-images/{{food._id}}.jpg" alt="" style="width:100px;height:auto" id="imgView" class="pt-3">
+                                    <input type="file" name="image" class="form-control upload-btn mt-2" onchange="viewImage(event)">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label">
+                                    <p class="form-label">Location</p>
+                                </label>
+                                
+                                {{#if food.address}}
+                                
+                                <div class="col-10 col-md-5">
+                                    <textarea class="form-control" name="address" >{{food.address}}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <p class="location-or">OR</p>
+                            </div>
+                        {{#if food.latitude}}
+                            <div class="form-group col-12 col-md-9">
+                                <div class="col-12 col-md-2 col-form-label"></div>
+                                <div class="col-12 col-md-12 location-btn">
+                                    <a onClick='locate();' class="btn btn-success">Change Live Location</a>
+                                </div>
+                            </div>
+                            <input type="hidden" name="latitude" value="{{food.latitude}}"></input>
+                            <input type="hidden" name="longitude" value="{{food.longitude}}"></input>
+                            {{else}}
+                            <div class="form-group col-12 col-md-9">
+                                <div class="col-12 col-md-2 col-form-label"></div>
+                                <div class="col-12 col-md-12 location-btn">
+                                    <a onClick='locate();' class="btn btn-success">Give Live Location</a>
+                                </div>
+                                <input type="hidden" name="latitude"></input>
+                                <input type="hidden" name="longitude"></input>
+                            </div>
+                            {{/if}}
+                            {{else}}
+                            <div class="col-10 col-md-5">
+                                <textarea class="form-control" name="address" placeholder="Enter Pickup Location"></textarea>
+                            </div>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <p class="location-or">OR</p>
+                            </div>
+                            
+                            <div class="form-group col-12 col-md-9">
+                                <div class="col-12 col-md-2 col-form-label"></div>
+                                <div class="col-12 col-md-12 location-btn">
+                                    <a onClick='locate();' class="btn btn-success">Change Live Location</a>
+                                </div>
+                            </div>
+                            <input type="hidden" name="latitude" value="{{food.latitude}}"></input>
+                            <input type="hidden" name="longitude" value="{{food.longitude}}"></input>
+                            {{/if}}
+                            <div class="form-group col-12 col-md-7">
+                                <button type="submit" class="main-btn mt-2" style="float: right;" onclick="validateAndSend()">Submit</button>
+                            </div>
                         
                         </form>
 

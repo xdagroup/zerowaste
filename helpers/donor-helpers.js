@@ -61,7 +61,10 @@ module.exports = {
                 $set: {
                     totalFoodCooked: foodDetails.totalFoodCooked,
                     foodWasteQty: foodDetails.foodWasteQty,
-                    pickUpTime: foodDetails.pickUpTime
+                    pickUpTime: foodDetails.pickUpTime,
+                    address: foodDetails.address,
+                    latitude: foodDetails.latitude,
+                    longitude:foodDetails.longitude
                 }
             }).then((response) => {
                 resolve(response)

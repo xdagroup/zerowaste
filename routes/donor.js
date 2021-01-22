@@ -63,6 +63,7 @@ router.get('/list', verifyLogin, verifyRole, (req, res) => {
 
 router.get('/edit-product/:id', async (req, res) => {
     let food = await donorHelper.getFoodDetails(req.params.id)
+    console.log(food)
     res.render('donor/edit-product', { food })
 })
 router.post('/edit-product/:id', (req, res) => {

@@ -32,3 +32,27 @@ $(document).ready(function () {
     const countupEls = document.querySelectorAll('.timer');
     countupEls.forEach(animateCountUp);
 })
+function locate() {
+
+    const locInfo = document.querySelector('#locInfo');
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const lat = position.coords.latitude;
+            document.donateForm.latitude.value = lat
+            const long = position.coords.longitude;
+            document.donateForm.longitude.value = long
+            alert("Location Fetched Successfully")
+
+        });
+    }
+}
+
+function validateAndSend() {
+    if (donateForm.address.value == '' && donateForm.latitude.value == '') {
+        alert('Please provide pickup location!');
+        return false;
+    }
+    else {
+        donateForm.submit();
+    }
+}
