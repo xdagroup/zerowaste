@@ -835,10 +835,14 @@ p {
   margin:5px;
 }
 .loginform-link{
-  color:rgb(138, 218, 218);
+  color:white;
+  background:rgb(57, 81, 185);
+  padding:10px;
+  border-radius: 1rem;
 }
 .loginform-link:hover{
   color:white;
+  font-weight:bold;
 }
 .form-page-image {
   padding-top: 10px; }

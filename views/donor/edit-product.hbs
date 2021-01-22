@@ -32,6 +32,18 @@
     function viewImage(event) {
         document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
     }
+    function locate() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const lat = position.coords.latitude;
+                    document.editForm.latitude.value = lat
+                    const long = position.coords.longitude;
+                    document.editForm.longitude.value = long
+                    alert("Location Fetched Successfully")
+
+                });
+            }
+        }
 </script>
 <header class="header-area">
     <div class="navbar-area">
@@ -82,7 +94,7 @@
                         <p class="page-head">EDIT FOOD</p>
                     
 
-                        <form name="donateForm" class="" action="/donor/edit-product/{{food._id}}" method="post" enctype="multipart/form-data">
+                        <form name="editForm" class="" action="/donor/edit-product/{{food._id}}" method="post" enctype="multipart/form-data">
                             
                             <div class="form-group row">
                                 <label class="col-12 col-md-2 col-form-label">
