@@ -23,6 +23,15 @@ var foodSchema = new mongoose.Schema({
     },
     acceptorId: {
         type: Schema.Types.ObjectId
+    },
+    address: {
+        type:String
+    },
+    latitude: {
+        type: String
+    },
+    longitude: {
+        type: String
     }
 });
 var foodModel = mongoose.model('Food', foodSchema)

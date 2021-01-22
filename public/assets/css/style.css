@@ -929,7 +929,15 @@ input[type=file]::-webkit-file-upload-button:hover {
 .page-content {
   padding-top: 14vh; }
 
-
+.location-or{
+  text-align:center!important;
+}
+.location-btn{
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
 /* PROFILE */
 .proPic {
   height: 100px;

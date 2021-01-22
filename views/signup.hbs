@@ -1,24 +1,6 @@
 
     
 
-<script>
-    function locate() {
-        
-        const locInfo = document.querySelector('#locInfo');
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                const lat = position.coords.latitude;
-                document.signup.latitude.value = lat
-                const long = position.coords.longitude;
-                document.signup.longitude.value = long
-                alert("Location Fetched Successfully")
-
-            });
-        }
-    }
-
-   
-</script>
 
 <header class="header-area">
     <div class="navbar-area">

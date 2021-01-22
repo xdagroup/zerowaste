@@ -4,7 +4,8 @@ var nodemailer = require('nodemailer');
 module.exports = {
     addFood: (userData)=>{
         return new Promise(async (resolve, reject) => {
-            await foodModel.create({ donorId: userData.user, totalFoodCooked: userData.totalFoodCooked, foodWasteQty: userData.foodWasteQty, pickUpTime: userData.pickUpTime}).then((data) => {
+            await foodModel.create({ donorId: userData.user, totalFoodCooked: userData.totalFoodCooked, foodWasteQty: userData.foodWasteQty, pickUpTime: userData.pickUpTime, address:userData.address, latitude:userData.latitude, longitude:userData.longitude })
+                .then((data) => {
                 console.log("Returned Data")
                 console.log(data._id)
                 resolve({ status: true,id:data._id })

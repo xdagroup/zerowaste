@@ -25,7 +25,8 @@ router.get('/', verifyLogin, verifyRole, async (req, res, next)=> {
     res.render('donor/home', { user, donorMessage });
     donorMessage = ""
 });
-router.post('/addfood', verifyLogin, verifyRole, async (req, res, next)=> {
+router.post('/addfood', verifyLogin, verifyRole, async (req, res, next) => {
+    console.log(req.body)
     let user = req.session.user._id
     req.body.user = user
     // console.log("Files")

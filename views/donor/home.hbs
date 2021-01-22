@@ -10,6 +10,35 @@
 
 
 <a href="donor/list" class="btn btn-primary mt-2">Dashboard</a> --}}
+<script>
+    function locate() {
+
+        const locInfo = document.querySelector('#locInfo');
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const lat = position.coords.latitude;
+                document.donateForm.latitude.value = lat
+                const long = position.coords.longitude;
+                document.donateForm.longitude.value = long
+                alert("Location Fetched Successfully")
+
+            });
+        }
+    }
+    
+    function validateAndSend() {
+        if (donateForm.address.value == '' && donateForm.latitude.value == '') {
+                alert('Please provide pickup location!');
+                return false;
+            }
+            else {
+                donateForm.submit();
+            }
+        }
+    
+
+
+</script>
 
 <header class="header-area">
     <div class="navbar-area">
@@ -58,32 +87,68 @@
                         </div>
                         <p class="page-head">DONATE FOOD</p>
 
-                        <form class="col-12 col-md-6 col-lg-4" action="donor/addfood" method="post" enctype="multipart/form-data">
+                    <form name="donateForm" class="" action="donor/addfood" method="post" enctype="multipart/form-data">
                             {{#if donorMessage}}
-                            <p class="form-message">{{donorMessage}}</p>
+                            <p class="form-message col-12 col-md-7">{{donorMessage}}</p>
                             {{/if}}
-                            <div class="form-group">
-                                <label class="form-label">Total Food Cooked</label>
-                                <input type='text' class="form-control" name='totalFoodCooked' id='totalFoodCooked' required="required">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Wasted Food Quantity</label>
-                                <input type='text' class="form-control" name='foodWasteQty' required="required">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Food Pickup Time</label>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label">
+                                    <p class="form-label">Quantity Cooked</p></label>
+                                    <div class="col-10 col-md-5">
+                                <input type='number' class="form-control" name='totalFoodCooked' id='totalFoodCooked' required="required" placeholder="Enter Quantity of Food Cooked (in Kilograms)">
+                            </div></div>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label">
+                                    <p class="form-label">Quantity Wasted</p></label>
+                                    <div class="col-10 col-md-5">
+                                <input type='number' class="form-control" name='foodWasteQty' required="required" placeholder="Enter Quantity of Food Wasted (in Kilograms)">
+                            </div></div>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label">
+                                    <p class="form-label">Pickup Time</p></label>
+                                    <div class="col-10 col-md-5">
                                 <input type="datetime-local" class="form-control" name='pickUpTime' id='pickUpTime' required="required">
+                            </div></div>
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label" for="">
+                                    <p class="form-label">Image</p></label>
+                                    <div class="col-10 col-md-5">
+                                <input type="file" class="form-control upload-btn" name="image" class="form-control" required="required">
+                          </div>      
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="">Image</label>
-                                <input type="file" class="form-control upload-btn" name="image" class="form-control">
+                            <div class="form-group row">
+                                <label class="col-12 col-md-2 col-form-label">
+                                    <p class="form-label">Location</p>
+                                </label>
+                                <div class="col-10 col-md-5">
+                                    <textarea class="form-control" name="address" placeholder="Enter Pickup Location"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-9">
+                            <p class="location-or">OR</p>
+                            </div>
+                            
+                            <div class="form-group col-12 col-md-9">
+                                <div class="col-12 col-md-2 col-form-label"></div>
+                                <div class="col-12 col-md-12 location-btn">
+                                    <a onClick='locate();' class="btn btn-success">Give Live Location</a>
+                                </div>
+                            </div>
+                               
                                 
-                            </div>
-                        <div class="form-group">
-                                <button type="submit" class="main-btn mt-2">Submit</button>
+                                
+                                <input type="hidden" name="latitude"></input>
+                                <input type="hidden" name="longitude"></input>
+
+                            
+                        <div class="form-group col-12 col-md-7">
+                                <button type="submit" class="main-btn mt-2" style="float: right;" onclick="validateAndSend()">Submit</button>
                         </div>
                             
-                        </form>
+                    </form>
+
+                    </div>
+
                     </div> <!-- header hero content -->
                 </div>
             </div> <!-- row -->
