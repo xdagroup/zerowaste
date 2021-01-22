@@ -24,7 +24,15 @@ router.get('/login', function (req, res, next) {
   req.session.loginErr = false
 });
 router.get('/signup', function (req, res, next) {
-  res.render('signup');
+  if (req.session.loggedIn) {
+    if (req.session.user.role === "donor")
+      res.redirect('/donor')
+    else
+      res.redirect('/acceptor')
+  } else {
+    res.render('signup');
+  }
+  
 });
 router.post('/signup', async (req, res) => {
   console.log(req.body)
