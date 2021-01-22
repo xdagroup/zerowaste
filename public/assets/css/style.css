@@ -814,12 +814,14 @@ p {
 /* LOGIN FORM LOGIN PAGE */
 .login-form {
   padding-top: 14vh; }
+
 .form-label{
   color:white;
   background:rgb(57, 81, 185);
   border-radius: 1rem;
-  padding:10px;
-
+  padding-left:10px;
+  padding-right:10px;
+  display:inline-block;
 }
 .small-form-label{
   color:white;
