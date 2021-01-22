@@ -67,11 +67,13 @@
                                     <td class="waste-food">{{this.foodWasteQty}}</td>
                                     <td class="pickup-time">{{this.pickUpTime}}</td>
                                     <td class="food-img"><img style="width:100px;height:100px;" src="/food-images/{{this._id}}.jpg" class=""></td>
-                                    {{#each this.user}}
                                     <td class="food-donor">
+                                        <a href="/profile/{{this.donorId}}" class="btn btn-primary">Donor Profile</a>
+                                    {{#each this.user}}
+                                    
                                         {{!-- {{this.name}}<br>{{this.email}} --}}
                                   
-                                    <a href="/profile/{{this.donorId}}" class="btn btn-primary">Donor Profile</a>
+                                    
                                         {{#if this.latitude}}
                                         <br>
                                         <a href="https://www.openstreetmap.org/#map=19/{{this.latitude}}/{{this.longitude}}"
