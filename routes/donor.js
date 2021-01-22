@@ -21,9 +21,13 @@ const verifyRole = (req, res, next) => {
 }
 router.get('/', verifyLogin, verifyRole, async (req, res, next)=> {
     let user = req.session.user
+    let uid = req.session.user._id
+    donorHelper.getDonatedCount(uid).then((donatedCount) => {
+        res.render('donor/home', { user, donorMessage, donatedCount});
+        donorMessage = ""
+    })
 
-    res.render('donor/home', { user, donorMessage });
-    donorMessage = ""
+    
 });
 router.post('/addfood', verifyLogin, verifyRole, async (req, res, next) => {
     console.log(req.body)

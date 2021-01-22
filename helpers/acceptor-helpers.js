@@ -44,5 +44,12 @@ module.exports = {
 
             resolve(foodList)
         })
+    },
+    getAcceptedCount: (uid) => {
+        return new Promise((resolve, reject) => {
+            foodModel.countDocuments({ acceptorId: uid }).then((response) => {
+                resolve(response)
+            })
+        })
     }
 }

@@ -78,5 +78,12 @@ module.exports = {
                 resolve(response)
             })
         })
+    },
+    getDonatedCount: (uid) => {
+        return new Promise((resolve, reject) => {
+            foodModel.countDocuments({ donorId: uid }).then((response)=> {
+                resolve(response)
+            })
+        })
     }
 }

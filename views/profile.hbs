@@ -91,6 +91,11 @@
                                                 alt="Profile Pic">
                                             <h5 class="lightTitle card-title">{{response.name}}</h5>
                                             <h6 class="lightSubTitle card-subtitle">{{response.role}}</h6>
+                                            {{#if response.donatedCount}}
+                                            <p class="lightDesc card-text">Total Foods Donated: {{response.donatedCount}}</p>
+                                            {{else}}
+                                            <p class="lightDesc card-text">Total Foods Accepted: {{response.acceptedCount}}</p>
+                                            {{/if}}
                                             <p class="lightDesc card-text">Contact Number: {{response.phone}} <br> <br> Address: {{response.address}}</p>
                                             <p class="lightMail card-text">
                                                 <span class="lightMailText rounded">{{response.email}}</span>

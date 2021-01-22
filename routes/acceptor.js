@@ -17,10 +17,12 @@ const verifyRole = (req, res, next) => {
     }
 }
 
-router.get('/', verifyLogin,verifyRole, function (req, res, next) {
+router.get('/', verifyLogin,verifyRole, async (req, res, next)=> {
     let user = req.session.user
+    let uid = req.session.user._id
+    var acceptedCount = await acceptorHelper.getAcceptedCount(uid)
     acceptorHelper.getAllFood().then((response) => {
-        res.render('acceptor/home', { user,response });
+        res.render('acceptor/home', { user,response,acceptedCount });
     })
 });
 

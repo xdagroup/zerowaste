@@ -3,6 +3,8 @@ var router = express.Router();
 var loginHelper = require('../helpers/login-helpers')
 var userHelper = require('../helpers/user-helpers')
 let nodeGeocoder = require('node-geocoder');
+var donorHelper = require('../helpers/donor-helpers');
+var acceptorHelper = require('../helpers/acceptor-helpers')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -79,10 +81,15 @@ router.get('/logout', (req, res) => {
   req.session.destroy()
   res.redirect('/login')
 })
-router.get('/profile/:id', (req, res) => {
+router.get('/profile/:id',  (req, res) => {
   let userId = req.params.id
-  userHelper.findUser(userId).then((response) => {
-    
+  userHelper.findUser(userId).then(async(response) => {
+    if (response.role === "donor")
+    {
+      response.donatedCount = await donorHelper.getDonatedCount(userId)
+    } else {
+      response.acceptedCount = await acceptorHelper.getAcceptedCount(userId)
+      }
     res.render('profile',{response})
   })
 })
