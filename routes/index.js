@@ -9,9 +9,19 @@ var acceptorHelper = require('../helpers/acceptor-helpers')
 /* GET home page. */
 router.get('/', function (req, res, next) {
   let user = req.session.user
-  console.log(user)
+  var btnText = ""
+  if (user) {
+    if (user.role === "donor") {
+      btnText="DONATE"
+    } else {
+      btnText="ACCEPT"
+    }
+  } else {
+    btnText="LOGIN"
+  }
+
   userHelper.getCount().then((response) => {
-    res.render('index',{response});
+    res.render('index',{response, btnText});
   })
   
 });
