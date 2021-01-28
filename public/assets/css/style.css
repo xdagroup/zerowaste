@@ -924,8 +924,17 @@ input[type=file]::-webkit-file-upload-button:hover {
 }
 .user-name{
   color:white;
-  font-size: 20px;
+  font-size: 18px;
   padding-bottom:10px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
+.user-name-head{
+  color:white;
+  font-family: 'Carter One', cursive !important;
+  font-weight: bold;
+  font-size: 27px;
+ 
 }
 .page-head{
   font-size: 38px;
