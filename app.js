@@ -7,6 +7,7 @@ require('dotenv').config()
 var bodyParser = require('body-parser');
 var fileUpload = require('express-fileupload');
 var indexRouter = require('./routes/index');
+const { middleware } = require('no-avatar');
 
 var donorRouter = require('./routes/donor');
 var acceptorRouter = require('./routes/acceptor');
@@ -17,7 +18,7 @@ mongoose.connect(process.env.DB_URL, {
 
 var session = require('express-session')
 var app = express();
-
+app.get('/avatar.png', middleware);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 

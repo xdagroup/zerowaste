@@ -6,6 +6,7 @@ let nodeGeocoder = require('node-geocoder');
 var donorHelper = require('../helpers/donor-helpers');
 var acceptorHelper = require('../helpers/acceptor-helpers')
 
+const { save } = require('no-avatar');
 /* GET home page. */
 router.get('/', function (req, res, next) {
   let user = req.session.user
@@ -93,13 +94,23 @@ router.get('/logout', (req, res) => {
 })
 router.get('/profile/:id',  (req, res) => {
   let userId = req.params.id
-  userHelper.findUser(userId).then(async(response) => {
+  const savePath = './public/avatar/avatar.png';
+
+  userHelper.findUser(userId).then(async (response) => {
+    var options = {
+      text: response.name,
+    };
+    save(savePath, options, function (err) {
+      if (err) return console.log(err);
+      return console.log('avatar.png saved at path ' + savePath);
+    })
     if (response.role === "donor")
     {
       response.donatedCount = await donorHelper.getDonatedCount(userId)
     } else {
       response.acceptedCount = await acceptorHelper.getAcceptedCount(userId)
-      }
+    }
+    console.log(response)
     res.render('profile',{response})
   })
 })
