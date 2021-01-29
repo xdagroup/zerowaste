@@ -21,22 +21,7 @@ Transport Food Anyone who can transport food, can contribute by delivering food 
 
 Request Food NGOs or people who manage orphanages/shelter homes can request for food based on their requirements.
 
-## Contents
-View the contents in this order.
 
-Brainstorming and Planning The initial brain storming session to present all the ideas, and finalize on our main application.
-
-Design Ideas All the user designs that we researched about to create mock ups and UX designs.
-
-Video about the purpose of the application The purpose behind every application is very crucial and we discuss it in this video. You will also get more insight into our application.
-
-Presentation You can view the presentation by opening "index.HTML" and following the instructions provided.
-
-Video of the Presentation If you cannot view the presentation, you can also view the video where we demo the presentation.
-
-Web Application This is the MAIN CODE of the application.
-
-Android We are also working on making an android application and this is a basic working prototype. You can install it any android mobile and try its features.
 
 ##  CONTRIBUTORS
 
